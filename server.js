@@ -9,3 +9,5 @@ app.use(express.urlencoded({ extended: true }));
 app.listen(PORT, function() {
   console.log(`Server running on Port ${PORT}`);
 });
+
+require("./app/routing/htmlRoutes")(app);
