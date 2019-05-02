@@ -1,13 +1,12 @@
-var express = require("express");
+const express = require("express");
 
-var PORT = process.env.PORT || 3000;
-var app = express;
+const PORT = process.env.PORT || 3000;
+const app = express();
 
-app.use(express.json());
+require("./app/routing/htmlRoutes")(app);
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.listen(PORT, function() {
   console.log(`Server running on Port ${PORT}`);
 });
-
-require("./app/routing/htmlRoutes")(app);
