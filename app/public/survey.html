@@ -15,6 +15,12 @@
     />
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <style>
+      .img-style {
+        width: 200px;
+        height: 200px;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -200,13 +206,60 @@
         </div>
         <div class="row mt-4 mb-5">
           <div class="col-12">
-            <button class="btn btn-lg btn-info submit">Submit</button>
+            <button
+              class="btn btn-lg btn-info submit"
+              data-toggle="modal"
+              data-target="#exampleModalCenter"
+            >
+              Submit
+            </button>
           </div>
         </div>
       </form>
+
+      <!-- modal -->
+      <div
+        class="modal fade"
+        id="exampleModalCenter"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">
+                Your Match
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div id="data" class="modal-body text-center"></div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="close"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
+
+<!-- script -->
 <script type="text/javascript">
   $(".submit").on("click", function(event) {
     event.preventDefault();
@@ -273,6 +326,20 @@
 
     $.post("/api/friends", newFriend, function(data) {
       console.log(data);
+
+      var name = $("<h4>");
+      name.text(data.name);
+
+      var image = $(
+        `<img class="img-style" alt='${data.name}' src='${data.photo}' />`
+      );
+
+      $("#data").append(image, name);
     });
+  });
+
+  $("#close").on("click", function(event) {
+    event.preventDefault();
+    $("#data").empty();
   });
 </script>
