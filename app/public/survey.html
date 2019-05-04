@@ -20,7 +20,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h1>Survey Question</h1>
+          <h1 class="sur">Survey Question</h1>
         </div>
       </div>
       <form>
@@ -49,11 +49,11 @@
               Your mind is always buzzing with unexplored ideas and plans.
             </label>
             <select class="form-control w-25" id="que1">
-              <option>1 (Strongly Disagree)</option>
+              <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
-              <option>5 (Strongly Agree)</option>
+              <option>5</option>
             </select>
           </div>
         </div>
@@ -65,11 +65,11 @@
               imagination.
             </label>
             <select class="form-control w-25" id="que2">
-              <option>1 (Strongly Disagree)</option>
+              <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
-              <option>5 (Strongly Agree)</option>
+              <option>5</option>
             </select>
           </div>
         </div>
@@ -81,11 +81,11 @@
               some pressure.
             </label>
             <select class="form-control w-25" id="que3">
-              <option>1 (Strongly Disagree)</option>
+              <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
-              <option>5 (Strongly Agree)</option>
+              <option>5</option>
             </select>
           </div>
         </div>
@@ -96,11 +96,11 @@
               You rarely do something just out of sheer curiosity.
             </label>
             <select class="form-control w-25" id="que4">
-              <option>1 (Strongly Disagree)</option>
+              <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
-              <option>5 (Strongly Agree)</option>
+              <option>5</option>
             </select>
           </div>
         </div>
@@ -111,11 +111,11 @@
               People can rarely upset you.
             </label>
             <select class="form-control w-25" id="que5">
-              <option>1 (Strongly Disagree)</option>
+              <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
-              <option>5 (Strongly Agree)</option>
+              <option>5</option>
             </select>
           </div>
         </div>
@@ -127,11 +127,11 @@
               feelings.
             </label>
             <select class="form-control w-25" id="que6">
-              <option>1 (Strongly Disagree)</option>
+              <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
-              <option>5 (Strongly Agree)</option>
+              <option>5</option>
             </select>
           </div>
         </div>
@@ -143,11 +143,11 @@
               sensitivities.
             </label>
             <select class="form-control w-25" id="que7">
-              <option>1 (Strongly Disagree)</option>
+              <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
-              <option>5 (Strongly Agree)</option>
+              <option>5</option>
             </select>
           </div>
         </div>
@@ -158,11 +158,11 @@
               You rarely get carried away by fantasies and ideas.
             </label>
             <select class="form-control w-25" id="que8">
-              <option>1 (Strongly Disagree)</option>
+              <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
-              <option>5 (Strongly Agree)</option>
+              <option>5</option>
             </select>
           </div>
         </div>
@@ -174,11 +174,11 @@
               whether they are supported by facts or not.
             </label>
             <select class="form-control w-25" id="que9">
-              <option>1 (Strongly Disagree)</option>
+              <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
-              <option>5 (Strongly Agree)</option>
+              <option>5</option>
             </select>
           </div>
         </div>
@@ -190,11 +190,11 @@
               people.
             </label>
             <select class="form-control w-25" id="que10">
-              <option>1 (Strongly Disagree)</option>
+              <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
-              <option>5 (Strongly Agree)</option>
+              <option>5</option>
             </select>
           </div>
         </div>
@@ -210,6 +210,10 @@
 <script type="text/javascript">
   $(".submit").on("click", function(event) {
     event.preventDefault();
+    var one = $("#que1")
+      .val()
+      .trim();
+    var two = parseInt(one);
     var newFriend = {
       name: $("#name")
         .val()
@@ -218,41 +222,57 @@
         .val()
         .trim(),
       scores: [
-        $("#que1")
-          .val()
-          .trim(),
-        $("#que2")
-          .val()
-          .trim(),
-        $("#que3")
-          .val()
-          .trim(),
-        $("#que4")
-          .val()
-          .trim(),
-        $("#que5")
-          .val()
-          .trim(),
-        $("#que6")
-          .val()
-          .trim(),
-        $("#que7")
-          .val()
-          .trim(),
-        $("#que8")
-          .val()
-          .trim(),
-        $("#que9")
-          .val()
-          .trim(),
-        $("#que10")
-          .val()
-          .trim()
+        two,
+        parseInt(
+          $("#que2")
+            .val()
+            .trim()
+        ),
+        parseInt(
+          $("#que3")
+            .val()
+            .trim()
+        ),
+        parseInt(
+          $("#que4")
+            .val()
+            .trim()
+        ),
+        parseInt(
+          $("#que5")
+            .val()
+            .trim()
+        ),
+        parseInt(
+          $("#que6")
+            .val()
+            .trim()
+        ),
+        parseInt(
+          $("#que7")
+            .val()
+            .trim()
+        ),
+        parseInt(
+          $("#que8")
+            .val()
+            .trim()
+        ),
+        parseInt(
+          $("#que9")
+            .val()
+            .trim()
+        ),
+        parseInt(
+          $("#que10")
+            .val()
+            .trim()
+        )
       ]
     };
-  });
 
-  $.post("/api/friends", newFriend, function(data){
-    
-  })
+    $.post("/api/friends", newFriend, function(data) {
+      console.log(data);
+    });
+  });
 </script>
